@@ -6,7 +6,7 @@
 //! # Example:
 //!
 //! ```rust,no_run
-//! fn print_python_stacks(pid: py_spy::Pid) -> Result<(), failure::Error> {
+//! fn print_python_stacks(pid: py_spy::Pid) -> Result<(), anyhow::Error> {
 //!     // Create a new PythonSpy object with the default config options
 //!     let config = py_spy::Config::default();
 //!     let mut process = py_spy::PythonSpy::new(pid, &config)?;
@@ -25,29 +25,33 @@
 //! }
 //! ```
 #[macro_use]
-extern crate failure;
+extern crate anyhow;
 #[macro_use]
 extern crate log;
 
-pub mod config;
 pub mod binary_parser;
-#[cfg(unwind)]
+pub mod config;
+#[cfg(target_os = "linux")]
+pub mod coredump;
+#[cfg(feature = "unwind")]
 mod cython;
-#[cfg(unwind)]
+pub mod dump;
+#[cfg(feature = "unwind")]
 mod native_stack_trace;
 mod python_bindings;
-mod python_interpreters;
-mod python_spy;
 mod python_data_access;
+mod python_interpreters;
+pub mod python_process_info;
+pub mod python_spy;
 mod python_threading;
 pub mod sampler;
-mod stack_trace;
+pub mod stack_trace;
 pub mod timer;
 mod utils;
 mod version;
 
-pub use python_spy::PythonSpy;
 pub use config::Config;
-pub use stack_trace::StackTrace;
-pub use stack_trace::Frame;
+pub use python_spy::PythonSpy;
 pub use remoteprocess::Pid;
+pub use stack_trace::Frame;
+pub use stack_trace::StackTrace;

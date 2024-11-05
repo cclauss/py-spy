@@ -1,3 +1,11 @@
+# Release notes are now being hosted in Github Releases: https://github.com/benfred/py-spy/releases
+
+## v0.3.11
+
+* Update dependencies [#463](https://github.com/benfred/py-spy/pull/463), [#457](https://github.com/benfred/py-spy/pull/463)
+* Warn about SYS_PTRACE when running in docker [#459](https://github.com/benfred/py-spy/pull/459)
+* Fix spelling mistakes [#453](https://github.com/benfred/py-spy/pull/453)
+
 ## v0.3.10
 * Add support for profiling Python v3.10 [#425](https://github.com/benfred/py-spy/pull/425)
 * Fix issue with native profiling on Linux with Anaconda [#447](https://github.com/benfred/py-spy/pull/447)
@@ -96,7 +104,7 @@
 * Show OS threadids in dump [#57](https://github.com/benfred/py-spy/issues/57)
 * Drop root permissions when starting new process [#116](https://github.com/benfred/py-spy/issues/116)
 * Support building for ARM processors [#89](https://github.com/benfred/py-spy/issues/89)
-* Python 3.8 compatability
+* Python 3.8 compatibility
 * Fix issues profiling functions with more than 4000 lines [#164](https://github.com/benfred/py-spy/issues/164)
 
 ## v0.1.11
